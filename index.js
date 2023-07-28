@@ -7,16 +7,12 @@ const { findUser, findRoom, compareUsers, getRoomUsers, broadcastRooms } = requi
 const app = express()
 const server = http.createServer(app)
 const router = express.Router()
-const io = new Server(server, { cors: { origin: '*', methods: ['GET', 'POST'] } })
+const io = new Server(server, {
+  cors: { origin: '*', methods: ['GET', 'POST'], allowedHeaders: ['Access-Control-Allow-Origin'] }
+})
 
 app.use(cors())
 app.use(router)
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
-})
 
 const PORT = 5001
 server.listen(PORT, () => console.log(`Server is running at ${PORT}`))
