@@ -14,12 +14,6 @@ const io = new Server(server, {
 app.use(cors())
 app.use(router)
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  next()
-})
-
 const PORT = 5001
 server.listen(PORT, () => console.log(`Server is running at ${PORT}`))
 
