@@ -92,6 +92,7 @@ io.on('connection', (socket) => {
     socket.on('cleanrooms', () => {
       users = []
       broadcastRooms([], socket)
+      console.log('clean rooms')
     })
   })
 
