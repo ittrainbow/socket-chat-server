@@ -88,6 +88,11 @@ io.on('connection', (socket) => {
           : broadcastRooms(users, socket)
       }
     }
+
+    socket.on('cleanrooms', () => {
+      users = []
+      broadcastRooms([], socket)
+    })
   })
 
   socket.on('disconnect', () => {})
