@@ -98,5 +98,7 @@ io.on('connection', (socket) => {
     })
   })
 
-  socket.on('disconnect', () => {})
+  socket.on('disconnect', () => {
+    socket.disconnect()
+  })
 })
