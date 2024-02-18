@@ -18,7 +18,7 @@ const io = require('socket.io')(server)
 // app.use(cors())
 app.use(router)
 
-const PORT = 5001
+const PORT = process.env.PORT || 5001
 server.listen(PORT, () => console.log(`Server is running at ${PORT}`))
 
 let users = []
