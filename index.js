@@ -7,9 +7,10 @@ const { findUser, findRoom, compareUsers, getRoomUsers, broadcastRooms } = requi
 const app = express()
 const server = http.createServer(app)
 const router = express.Router()
-const io = new Server(server, {
-  // cors: { origin: '*', methods: ['GET', 'POST'], allowedHeaders: ['Access-Control-Allow-Origin'] }
-})
+const io = new Server(
+  server
+  // {cors: { origin: '*', methods: ['GET', 'POST'], allowedHeaders: ['Access-Control-Allow-Origin'] }}
+)
 
 // app.use(cors())
 app.use(router)
@@ -47,9 +48,7 @@ io.on('connection', (socket) => {
 
       socket.emit('message', { ...adminData('Admin'), message: `Welcome, ${name}` })
 
-      socket.broadcast
-        .to(room)
-        .emit('message', { ...adminData('Admin'), message: `${name} entered room` })
+      socket.broadcast.to(room).emit('message', { ...adminData('Admin'), message: `${name} entered room` })
 
       io.to(room).emit('usersupdated', getRoomUsers(users, room))
     }
