@@ -1,16 +1,19 @@
 const express = require('express')
-const http = require('http')
-const { Server } = require('socket.io')
+const app = express()
+
 const cors = require('cors')
 const { findUser, findRoom, compareUsers, getRoomUsers, broadcastRooms } = require('./helpers')
 
-const app = express()
-const server = http.createServer(app)
+const server = require('http').createServer(app)
 const router = express.Router()
-const io = new Server(
-  server
-  // {cors: { origin: '*', methods: ['GET', 'POST'], allowedHeaders: ['Access-Control-Allow-Origin'] }}
-)
+
+const io = require('socket.io')(server)
+
+// const { Server } = require('socket.io')
+// const io = new Server(
+//   server,
+//   {cors: { origin: '*', methods: ['GET', 'POST'], allowedHeaders: ['Access-Control-Allow-Origin'] }}
+// )
 
 app.use(cors())
 app.use(router)
