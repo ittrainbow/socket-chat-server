@@ -1,7 +1,7 @@
 const express = require('express')
 const http = require('http')
 const { Server } = require('socket.io')
-// const cors = require('cors')
+const cors = require('cors')
 const { findUser, findRoom, compareUsers, getRoomUsers, broadcastRooms } = require('./helpers')
 
 const app = express()
@@ -12,7 +12,7 @@ const io = new Server(
   // {cors: { origin: '*', methods: ['GET', 'POST'], allowedHeaders: ['Access-Control-Allow-Origin'] }}
 )
 
-// app.use(cors())
+app.use(cors())
 app.use(router)
 
 const PORT = 5001
