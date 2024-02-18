@@ -10,8 +10,9 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "server": "nodemon index.js",
-    "start": "node index.js",
+    "server": "npx nodemon index.js",
+    "start": "npx nodemon index.js",
+    "startdev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
